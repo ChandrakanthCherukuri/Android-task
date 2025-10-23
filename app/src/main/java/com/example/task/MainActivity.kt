@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private var destinationLocation: LatLng? = null
 
     // Replace with your actual Google Maps API key
-    private val apiKey = "YOUR_GOOGLE_MAPS_API_KEY"
+    private val apiKey = "AIzaSyDemoKey-Replace-With-Your-Actual-API-Key"
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1

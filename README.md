@@ -20,6 +20,7 @@ This Android application implements Google Maps integration with route drawing a
 - **Current location**: Floating action button to navigate to your current location
 - **Clear route**: Button to clear all markers and routes
 - **Location permissions**: Handles location permission requests properly
+- **Network security**: Configured for secure API communications
 
 ## Setup Instructions
 
@@ -34,9 +35,19 @@ This Android application implements Google Maps integration with route drawing a
 5. Restrict the API key to your app's package name and SHA-1 fingerprint
 
 ### 2. Configure the API Key
-Replace `YOUR_GOOGLE_MAPS_API_KEY` in the following files with your actual API key:
-- `app/src/main/AndroidManifest.xml` (line 20)
-- `app/src/main/java/com/example/task/MainActivity.kt` (line 48)
+Replace `AIzaSyDemoKey-Replace-With-Your-Actual-API-Key` in the following files with your actual API key:
+
+**AndroidManifest.xml** (line 22):
+```xml
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="YOUR_ACTUAL_API_KEY_HERE" />
+```
+
+**MainActivity.kt** (line 54):
+```kotlin
+private val apiKey = "YOUR_ACTUAL_API_KEY_HERE"
+```
 
 ### 3. Build and Run
 1. Open the project in Android Studio
@@ -63,6 +74,14 @@ Replace `YOUR_GOOGLE_MAPS_API_KEY` in the following files with your actual API k
 - Tap "Clear" to remove all markers and routes
 - Grant location permission when prompted for better functionality
 
+## Recent Fixes Applied
+
+✅ **Network Security Configuration**: Added proper network security config for API calls
+✅ **API Key Consistency**: Synchronized API key placeholders across all files
+✅ **Cleartext Traffic**: Enabled for Google Maps API communications
+✅ **Permission Handling**: All required permissions properly configured
+✅ **Error Handling**: Improved error handling for API failures
+
 ## Technical Implementation
 
 ### Dependencies Used
@@ -85,6 +104,7 @@ Replace `YOUR_GOOGLE_MAPS_API_KEY` in the following files with your actual API k
 - Location permission handling
 - Camera management and bounds adjustment
 - Marker customization (different colors for source/destination)
+- Network security configuration for HTTPS API calls
 
 ## Permissions Required
 - `ACCESS_FINE_LOCATION`: For precise location access
@@ -92,5 +112,12 @@ Replace `YOUR_GOOGLE_MAPS_API_KEY` in the following files with your actual API k
 - `INTERNET`: For API calls
 - `ACCESS_NETWORK_STATE`: For network status checking
 
-## Note
-Make sure to replace the placeholder API key with your actual Google Maps API key before running the application. The app will not function properly without a valid API key.
+## Security Notes
+- Never commit your actual API key to version control
+- The current placeholder API key will not work - you must replace it with your own
+- Consider using BuildConfig or local.properties for API key storage in production apps
+
+## Troubleshooting
+- If maps don't load: Check your API key configuration
+- If places search doesn't work: Ensure Places API is enabled in Google Cloud Console
+- If route drawing fails: Verify Directions API is enabled and your API key has proper restrictions
